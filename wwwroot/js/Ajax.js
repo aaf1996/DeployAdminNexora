@@ -1,10 +1,10 @@
 //ns('CommandCenter.Site.UI.Web.Components');
-ns('Mitosiz.Site.UI.Web.Components');
-Mitosiz.Site.UI.Web.Components.Ajax = function (opts) {
+ns('Admin.Site.UI.Web.Components');
+Admin.Site.UI.Web.Components.Ajax = function (opts) {
     this.init(opts);
 };
 
-Mitosiz.Site.UI.Web.Components.Ajax.prototype = {
+Admin.Site.UI.Web.Components.Ajax.prototype = {
 
     form: null,
     content: null,
@@ -234,7 +234,7 @@ Mitosiz.Site.UI.Web.Components.Ajax.prototype = {
     },
 
     implementLoading: function () {
-        //this.loading = new Mitosiz.Site.UI.Web.Components.ProgressBar({ targetLoading: this.targetLoading });
+        //this.loading = new Admin.Site.UI.Web.Components.ProgressBar({ targetLoading: this.targetLoading });
     },
 
     abort: function () {

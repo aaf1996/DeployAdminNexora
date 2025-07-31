@@ -1,5 +1,5 @@
-﻿ns('Mitosiz.Site.MovementOfCommittees.Index')
-Mitosiz.Site.MovementOfCommittees.Index.Controller = function () {
+﻿ns('Admin.Site.MovementOfCommittees.Index')
+Admin.Site.MovementOfCommittees.Index.Controller = function () {
     var base = this;
     base.Initialize = function () {
         base.Ajax.AjaxGetPeriods.submit();
@@ -17,7 +17,7 @@ Mitosiz.Site.MovementOfCommittees.Index.Controller = function () {
             source: function (request, response) {
                 $.ajax({
                     type: 'POST',
-                    url: Mitosiz.Site.MovementOfCommittees.Actions.GetDropDownPatrons,
+                    url: Admin.Site.MovementOfCommittees.Actions.GetDropDownPatrons,
                     contentType: 'application/json',
                     data: JSON.stringify({
                         NamePatron: request.term
@@ -49,7 +49,7 @@ Mitosiz.Site.MovementOfCommittees.Index.Controller = function () {
             source: function (request, response) {
                 $.ajax({
                     type: 'POST',
-                    url: Mitosiz.Site.MovementOfCommittees.Actions.GetDropDownPatrons,
+                    url: Admin.Site.MovementOfCommittees.Actions.GetDropDownPatrons,
                     contentType: 'application/json',
                     data: JSON.stringify({
                         NamePatron: request.term
@@ -223,7 +223,7 @@ Mitosiz.Site.MovementOfCommittees.Index.Controller = function () {
         },
         AjaxGetMovementOfCommitteesForReportSuccess: function (data) {
             if (data) {
-                window.open('https://api.yosoymitosis.com/StaticFiles/ReportMovementOfCommittees/' + data.data);
+                window.open('https://api.soynexora.com/StaticFiles/ReportMovementOfCommittees/' + data.data);
             }
         },
         btnSearchClick: function () {
@@ -344,38 +344,38 @@ Mitosiz.Site.MovementOfCommittees.Index.Controller = function () {
         },
     };
     base.Ajax = {
-        AjaxGetPeriods: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.MovementOfCommittees.Actions.GetComissionPeriodForComission,
+        AjaxGetPeriods: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.MovementOfCommittees.Actions.GetComissionPeriodForComission,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetPeriodSuccess
         }),
-        AjaxGetMovementOfCommitteesForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.MovementOfCommittees.Actions.GetMovementOfCommitteesForAdmin,
+        AjaxGetMovementOfCommitteesForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.MovementOfCommittees.Actions.GetMovementOfCommitteesForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetMovementOfCommitteesForAdminSuccess
         }),
-        AjaxGetDetailMovementOfCommittees: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.MovementOfCommittees.Actions.GetDetailMovementOfCommittees,
+        AjaxGetDetailMovementOfCommittees: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.MovementOfCommittees.Actions.GetDetailMovementOfCommittees,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetDetailMovementOfCommitteesSuccess
         }),
-        AjaxSaveMovementOfCommitteesForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.MovementOfCommittees.Actions.SaveMovementOfCommitteesForAdmin,
+        AjaxSaveMovementOfCommitteesForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.MovementOfCommittees.Actions.SaveMovementOfCommitteesForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxSaveMovementOfCommitteesForAdminSuccess
         }),
-        AjaxUpdateMovementOfCommitteesForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.MovementOfCommittees.Actions.UpdateMovementOfCommitteesForAdmin,
+        AjaxUpdateMovementOfCommitteesForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.MovementOfCommittees.Actions.UpdateMovementOfCommitteesForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxUpdateMovementOfCommitteesForAdminSuccess
         }),
-        AjaxInsertComissionTobeReceived: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.MovementOfCommittees.Actions.InsertComissionTobeReceived,
+        AjaxInsertComissionTobeReceived: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.MovementOfCommittees.Actions.InsertComissionTobeReceived,
             autoSubmit: false,
             onSuccess: base.Event.AjaxInsertComissionTobeReceivedSuccess
         }),
-        AjaxGetMovementOfCommitteesForReport: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.MovementOfCommittees.Actions.GetMovementOfCommitteesForReport,
+        AjaxGetMovementOfCommitteesForReport: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.MovementOfCommittees.Actions.GetMovementOfCommitteesForReport,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetMovementOfCommitteesForReportSuccess
         }),
@@ -458,7 +458,7 @@ Mitosiz.Site.MovementOfCommittees.Index.Controller = function () {
         FillData: function (listData) {
             base.Control.tbodyTable().empty();
             listData.forEach(function (data) {
-                var urlVoucher = 'https://api.yosoymitosis.com/StaticFiles/MovementOfCommittees/' + data.fileName;
+                var urlVoucher = 'https://api.soynexora.com/StaticFiles/MovementOfCommittees/' + data.fileName;
                 var styleVoucher = data.fileName == '' ? "display:none;" : "";
                 var receipt = data.receipt == null ? "" : data.receipt;
                 var observation = data.observation == null ? "" : data.observation;

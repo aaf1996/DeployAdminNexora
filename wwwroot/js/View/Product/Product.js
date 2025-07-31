@@ -1,5 +1,5 @@
-﻿ns('Mitosiz.Site.Product.Index')
-Mitosiz.Site.Product.Index.Controller = function () {
+﻿ns('Admin.Site.Product.Index')
+Admin.Site.Product.Index.Controller = function () {
     var base = this;
     base.Initialize = function () {
         base.Function.GetProductForAdmin();
@@ -37,7 +37,7 @@ Mitosiz.Site.Product.Index.Controller = function () {
         slcActive: function () { return $('#slcActive'); },
         slcWholesaleVisualisable: function () { return $('#slcWholesaleVisualisable'); },
         txtPointsWholesale: function () { return $('#txtPointsWholesale'); },
-        txtCodeMitosiz: function () { return $('#txtCodeMitosiz'); },
+        txtCodeAdmin: function () { return $('#txtCodeAdmin'); },
         txtProductName: function () { return $('#txtProductName'); },
         txtDescription: function () { return $('#txtDescription'); },
         txtImageName: function () { return $('#txtImageName'); },
@@ -121,7 +121,7 @@ Mitosiz.Site.Product.Index.Controller = function () {
             formData.append('active', base.Control.slcActive().val());
             formData.append('wholesaleVisualisable', base.Control.slcWholesaleVisualisable().val());
             formData.append('productName', base.Control.txtProductName().val());
-            formData.append('codeMitosiz', base.Control.txtCodeMitosiz().val());
+            formData.append('codeAdmin', base.Control.txtCodeAdmin().val());
             formData.append('description', base.Control.txtDescription().val());
             formData.append('price', base.Control.txtPrice().val());
             formData.append('category', base.Control.slcCategory().val());
@@ -155,7 +155,7 @@ Mitosiz.Site.Product.Index.Controller = function () {
             }
 
             $.ajax({
-                url: Mitosiz.Site.Product.Actions.UpdateProduct,
+                url: Admin.Site.Product.Actions.UpdateProduct,
                 type: 'POST',
                 data: formData,
                 processData: false,
@@ -189,7 +189,7 @@ Mitosiz.Site.Product.Index.Controller = function () {
             var discount = base.Control.txtDiscount().val() == "" ? 0 : base.Control.txtDiscount().val();
             formData.append('active', base.Control.slcActive().val());
             formData.append('wholesaleVisualisable', base.Control.slcWholesaleVisualisable().val());
-            formData.append('codeMitosiz', base.Control.txtCodeMitosiz().val());
+            formData.append('codeAdmin', base.Control.txtCodeAdmin().val());
             formData.append('productName', base.Control.txtProductName().val());
             formData.append('description', base.Control.txtDescription().val());
             formData.append('price', base.Control.txtPrice().val());
@@ -225,7 +225,7 @@ Mitosiz.Site.Product.Index.Controller = function () {
             }
 
             $.ajax({
-                url: Mitosiz.Site.Product.Actions.SaveProduct,
+                url: Admin.Site.Product.Actions.SaveProduct,
                 type: 'POST',
                 data: formData,
                 processData: false,
@@ -255,7 +255,7 @@ Mitosiz.Site.Product.Index.Controller = function () {
             base.Control.slcActive().selectpicker('refresh');
             base.Control.slcWholesaleVisualisable().val("true");
             base.Control.slcWholesaleVisualisable().selectpicker('refresh');
-            base.Control.txtCodeMitosiz().val("");
+            base.Control.txtCodeAdmin().val("");
             base.Control.txtProductName().val("");
             base.Control.txtDescription().val("");
             base.Control.txtPrice().val("0");
@@ -295,18 +295,18 @@ Mitosiz.Site.Product.Index.Controller = function () {
         },
     };
     base.Ajax = {
-        AjaxGetProductForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Product.Actions.GetProductForAdmin,
+        AjaxGetProductForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Product.Actions.GetProductForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetProductForAdminSuccess
         }),
-        AjaxGetProductForEdit: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Product.Actions.GetProductForEdit,
+        AjaxGetProductForEdit: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Product.Actions.GetProductForEdit,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetProductForEditSuccess
         }),
-        AjaxGetDropDownProduct: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Product.Actions.GetDropDownProduct,
+        AjaxGetDropDownProduct: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Product.Actions.GetDropDownProduct,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetDropDownProductSuccess
         }),
@@ -405,7 +405,7 @@ Mitosiz.Site.Product.Index.Controller = function () {
                     '</div></td>' +
                     '<td><strong>' + data.productId + '</strong></td>' +
                     '<td>' + data.productName + '</td>' +
-                    '<td><img src="https://api.yosoymitosis.com/StaticFiles/ProductsImg/' + data.imageName + '" style="height: 80px"></td>' +
+                    '<td><img src="https://api.soynexora.com/StaticFiles/ProductsImg/' + data.imageName + '" style="height: 80px"></td>' +
                     '<td>' + data.price + '</td>' +
                     '<td>' + data.activationPoints + '</td>' +
                     '<td>' + data.networkPoints + '</td>' +
@@ -457,7 +457,7 @@ Mitosiz.Site.Product.Index.Controller = function () {
                         source: function (request, response) {
                             $.ajax({
                                 type: 'POST',
-                                url: Mitosiz.Site.Product.Actions.GetDropDownProduct,
+                                url: Admin.Site.Product.Actions.GetDropDownProduct,
                                 contentType: 'application/json',
                                 data: JSON.stringify({
                                     productName: request.term
@@ -496,7 +496,7 @@ Mitosiz.Site.Product.Index.Controller = function () {
             base.Control.slcActive().selectpicker('refresh');
             base.Control.slcWholesaleVisualisable().val(data.wholesaleVisualisable.toString());
             base.Control.slcWholesaleVisualisable().selectpicker('refresh');
-            base.Control.txtCodeMitosiz().val(data.codeMitosiz);
+            base.Control.txtCodeAdmin().val(data.codeAdmin);
             base.Control.txtProductName().val(data.productName);
             base.Control.txtDescription().val(data.description);
             base.Parameters.oldImageName = data.imageName;

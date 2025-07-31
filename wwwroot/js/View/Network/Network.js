@@ -1,5 +1,5 @@
-﻿ns('Mitosiz.Site.Network.Index')
-Mitosiz.Site.Network.Index.Controller = function () {
+﻿ns('Admin.Site.Network.Index')
+Admin.Site.Network.Index.Controller = function () {
     var base = this;
     base.Initialize = function () {
         base.Function.clsNumberPagination();
@@ -116,23 +116,23 @@ Mitosiz.Site.Network.Index.Controller = function () {
         },
     };
     base.Ajax = {
-        AjaxGetPeriods: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Network.Actions.GetNetworkPeriodForMLM,
+        AjaxGetPeriods: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Network.Actions.GetNetworkPeriodForMLM,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetPeriodSuccess
         }),
-        AjaxRecalculationsPoints: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Network.Actions.RecalculationsPoints,
+        AjaxRecalculationsPoints: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Network.Actions.RecalculationsPoints,
             autoSubmit: false,
             onSuccess: base.Event.AjaxRecalculationsPointsSuccess
         }),
-        AjaxGeneralRecalculationRange: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Network.Actions.GeneralRecalculationRange,
+        AjaxGeneralRecalculationRange: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Network.Actions.GeneralRecalculationRange,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGeneralRecalculationRangeSuccess
         }),
-        AjaxGetUserNetworkForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Network.Actions.GetUserNetworkForAdmin,
+        AjaxGetUserNetworkForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Network.Actions.GetUserNetworkForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetUserNetworkForAdminSuccess
         }),

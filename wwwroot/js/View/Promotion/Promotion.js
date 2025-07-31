@@ -1,5 +1,5 @@
-﻿ns('Mitosiz.Site.Promotion.Index')
-Mitosiz.Site.Promotion.Index.Controller = function () {
+﻿ns('Admin.Site.Promotion.Index')
+Admin.Site.Promotion.Index.Controller = function () {
     var base = this;
     base.Initialize = function () {
         base.Function.clsNumberPagination();
@@ -159,28 +159,28 @@ Mitosiz.Site.Promotion.Index.Controller = function () {
         },
     };
     base.Ajax = {
-        AjaxGetPromotionAmount45Admin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Promotion.Actions.GetPromotionAmount45Admin,
+        AjaxGetPromotionAmount45Admin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Promotion.Actions.GetPromotionAmount45Admin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetPromotionAmount45AdminSuccess
         }),
-        AjaxGetDetailPromotionAmount45: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Promotion.Actions.GetDetailPromotionAmount45,
+        AjaxGetDetailPromotionAmount45: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Promotion.Actions.GetDetailPromotionAmount45,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetDetailPromotionAmount45Success
         }),
-        AjaxDeletePromotionAmount45: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Promotion.Actions.DeletePromotionAmount45,
+        AjaxDeletePromotionAmount45: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Promotion.Actions.DeletePromotionAmount45,
             autoSubmit: false,
             onSuccess: base.Event.AjaxDeletePromotionAmount45Success
         }),
-        AjaxInsertPromotionAmount45: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Promotion.Actions.InsertPromotionAmount45,
+        AjaxInsertPromotionAmount45: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Promotion.Actions.InsertPromotionAmount45,
             autoSubmit: false,
             onSuccess: base.Event.AjaxInsertPromotionAmount45Success
         }),
-        AjaxUpdatePromotionAmount45: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Promotion.Actions.UpdatePromotionAmount45,
+        AjaxUpdatePromotionAmount45: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Promotion.Actions.UpdatePromotionAmount45,
             autoSubmit: false,
             onSuccess: base.Event.AjaxUpdatePromotionAmount45Success
         }),
@@ -315,13 +315,21 @@ Mitosiz.Site.Promotion.Index.Controller = function () {
             base.Control.slcStatus().selectpicker('refresh');
             base.Control.txtPoints().val(data.pointsEvaluated);
             base.Control.txtQuantity().val(data.quantity);
-            base.Control.txtInitEvaluationDate().val(data.startDatePromotionEvaluation);
+            base.Control.txtInitEvaluationDate().datepicker({
+                autoclose: true
+            }).datepicker("setDate", data.startDatePromotionEvaluation);
             base.Control.txtInitEvaluationHour().val(data.startHourPromotionEvaluation);
-            base.Control.txtEndEvaluationDate().val(data.endDatePromotionEvaluation);
+            base.Control.txtEndEvaluationDate().datepicker({
+                autoclose: true
+            }).datepicker("setDate", data.endDatePromotionEvaluation);
             base.Control.txtEndEvaluationHour().val(data.endHourPromotionEvaluation);
-            base.Control.txtInitPromotionDate().val(data.startDatePromotionRun);
+            base.Control.txtInitPromotionDate().datepicker({
+                autoclose: true
+            }).datepicker("setDate", data.startDatePromotionRun);
             base.Control.txtInitPromotionHour().val(data.startHourPromotionRun);
-            base.Control.txtEndPromotionDate().val(data.endDatePromotionRun);
+            base.Control.txtEndPromotionDate().datepicker({
+                autoclose: true
+            }).datepicker("setDate", data.endDatePromotionRun);
             base.Control.txtEndPromotionHour().val(data.endHourPromotionRun);
         },
         ShowToastrError: function (message) {

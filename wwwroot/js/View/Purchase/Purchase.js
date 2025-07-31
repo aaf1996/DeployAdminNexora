@@ -1,5 +1,5 @@
-﻿ns('Mitosiz.Site.Purchase.Index')
-Mitosiz.Site.Purchase.Index.Controller = function () {
+﻿ns('Admin.Site.Purchase.Index')
+Admin.Site.Purchase.Index.Controller = function () {
     var base = this;
     base.Initialize = function () {
         base.Function.GetPurchasesAdmin();
@@ -50,6 +50,7 @@ Mitosiz.Site.Purchase.Index.Controller = function () {
         btnUpdateModal: function () { return $('#btnUpdateModal'); },
         btnReportPurchase: function () { return $('#btnReportPurchase'); },
         btnReportDetailPurchase: function () { return $('#btnReportDetailPurchase'); },
+        slcStatusFilter: function () { return $('#slcStatusFilter'); },
     };
     base.Event = {
         AjaxGetPurchasesAdminSuccess: function (data) {
@@ -152,12 +153,12 @@ Mitosiz.Site.Purchase.Index.Controller = function () {
         },
         AjaxGeneratePurchaseReportSuccess: function (data) {
             if (data) {
-                window.open('https://api.yosoymitosis.com/StaticFiles/ReportPurchases/' + data.data);
+                window.open('https://api.soynexora.com/StaticFiles/ReportPurchases/' + data.data);
             }
         },
         AjaxGenerateDetailPurchaseReportSuccess: function (data) {
             if (data) {
-                window.open('https://api.yosoymitosis.com/StaticFiles/ReportDetailPurchases/' + data.data);
+                window.open('https://api.soynexora.com/StaticFiles/ReportDetailPurchases/' + data.data);
             }
         },
         AjaxDeletePurchaseSuccess: function (data) {
@@ -183,7 +184,8 @@ Mitosiz.Site.Purchase.Index.Controller = function () {
                 purchaseId: purchaseId,
                 names: base.Control.txtUserName().val(),
                 startDateString: base.Control.txtStartDate().val(),
-                endDateString: base.Control.txtEndDate().val()
+                endDateString: base.Control.txtEndDate().val(),
+                statusPurchase: base.Control.slcStatusFilter().val()
             };
             base.Ajax.AjaxGetPurchasesAdmin.submit();
         },
@@ -199,7 +201,8 @@ Mitosiz.Site.Purchase.Index.Controller = function () {
                 purchaseId: purchaseId,
                 names: base.Control.txtUserName().val(),
                 startDateString: base.Control.txtStartDate().val(),
-                endDateString: base.Control.txtEndDate().val()
+                endDateString: base.Control.txtEndDate().val(),
+                statusPurchase: base.Control.slcStatusFilter().val()
             };
             base.Ajax.AjaxGetPurchasesAdmin.submit();
         },
@@ -244,53 +247,53 @@ Mitosiz.Site.Purchase.Index.Controller = function () {
         },
     };
     base.Ajax = {
-        AjaxGetPurchasesAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Purchase.Actions.GetDataPurchase,
+        AjaxGetPurchasesAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Purchase.Actions.GetDataPurchase,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetPurchasesAdminSuccess
         }),
-        AjaxGetTypePurchases: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Purchase.Actions.GetTypePurchases,
+        AjaxGetTypePurchases: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Purchase.Actions.GetTypePurchases,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetTypePurchasesSuccess
         }),
-        AjaxGetTypePayments: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Purchase.Actions.GetTypePayments,
+        AjaxGetTypePayments: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Purchase.Actions.GetTypePayments,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetTypePaymentsSuccess
         }),
-        AjaxGetStores: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Purchase.Actions.GetStores,
+        AjaxGetStores: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Purchase.Actions.GetStores,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetStoresSuccess
         }),
-        AjaxGetEditPurchaseAndDetail: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Purchase.Actions.GetEditPurchaseAndDetail,
+        AjaxGetEditPurchaseAndDetail: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Purchase.Actions.GetEditPurchaseAndDetail,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetEditPurchaseAndDetailSuccess
         }),
-        AjaxUpdatePurchseForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Purchase.Actions.UpdatePurchseForAdmin,
+        AjaxUpdatePurchseForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Purchase.Actions.UpdatePurchseForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxUpdatePurchseForAdminSuccess
         }),
-        AjaxGetPurchaseDetailForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Purchase.Actions.GetPurchaseDetailForAdmin,
+        AjaxGetPurchaseDetailForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Purchase.Actions.GetPurchaseDetailForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetPurchaseDetailForAdminSuccess
         }),
-        AjaxGeneratePurchaseReport: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Purchase.Actions.GeneratePurchaseReport,
+        AjaxGeneratePurchaseReport: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Purchase.Actions.GeneratePurchaseReport,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGeneratePurchaseReportSuccess
         }),
-        AjaxGenerateDetailPurchaseReport: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Purchase.Actions.GenerateDetailPurchaseReport,
+        AjaxGenerateDetailPurchaseReport: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Purchase.Actions.GenerateDetailPurchaseReport,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGenerateDetailPurchaseReportSuccess
         }),
-        AjaxDeletePurchase: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Purchase.Actions.DeletePurchase,
+        AjaxDeletePurchase: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Purchase.Actions.DeletePurchase,
             autoSubmit: false,
             onSuccess: base.Event.AjaxDeletePurchaseSuccess
         }),
@@ -432,7 +435,8 @@ Mitosiz.Site.Purchase.Index.Controller = function () {
                 purchaseId: purchaseId,
                 names: base.Control.txtUserName().val(),
                 startDateString: base.Control.txtStartDate().val(),
-                endDateString: base.Control.txtEndDate().val()
+                endDateString: base.Control.txtEndDate().val(),
+                statusPurchase: base.Control.slcStatusFilter().val()
             };
             base.Ajax.AjaxGetPurchasesAdmin.submit();
         },
@@ -447,7 +451,7 @@ Mitosiz.Site.Purchase.Index.Controller = function () {
         FillData: function (listData) {
             base.Control.tbodyTable().empty();
             listData.forEach(function (data) {
-                var urlVoucher = 'https://api.yosoymitosis.com/StaticFiles/PaymentImg/' + data.voucher;
+                var urlVoucher = 'https://api.soynexora.com/StaticFiles/PaymentImg/' + data.voucher;
                 var styleVoucher = data.voucher == '' ? "display:none;" : "";
                 var styleDelete = data.statusPurchase == 'Evaluación' || data.statusPurchase == 'Validada' ? "display:none;" : "";
                 base.Control.tbodyTable().append('<tr style="text-align: center;">' +
@@ -541,7 +545,7 @@ Mitosiz.Site.Purchase.Index.Controller = function () {
             listDetail.forEach(function (data) {
                 base.Control.tbodyDetailPurchase().append('<tr style="text-align: center;">' +
                     '<td>' + data.productName + '</td>' +
-                    '<td><img src="https://api.yosoymitosis.com/StaticFiles/ProductsImg/' + data.imageName + '" style="height: 80px"></td>' +
+                    '<td><img src="https://api.soynexora.com/StaticFiles/ProductsImg/' + data.imageName + '" style="height: 80px"></td>' +
                     '<td>' + data.quantity + '</td>' +
                     '<td>' + data.subtotalNetAmount + '</td>' +
                     '<td>' + data.subtotalPoints + '</td>' +

@@ -1,5 +1,5 @@
-﻿ns('Mitosiz.Site.AvailableBalance.Index')
-Mitosiz.Site.AvailableBalance.Index.Controller = function () {
+﻿ns('Admin.Site.AvailableBalance.Index')
+Admin.Site.AvailableBalance.Index.Controller = function () {
     var base = this;
     base.Initialize = function () {
         base.Ajax.AjaxGetStores.submit();
@@ -65,18 +65,18 @@ Mitosiz.Site.AvailableBalance.Index.Controller = function () {
         },
     };
     base.Ajax = {
-        AjaxGetAvailableBalanceForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.AvailableBalance.Actions.GetAvailableBalanceForAdmin,
+        AjaxGetAvailableBalanceForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.AvailableBalance.Actions.GetAvailableBalanceForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetAvailableBalanceForAdminSuccess
         }),
-        AjaxGetStores: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.AvailableBalance.Actions.GetStores,
+        AjaxGetStores: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.AvailableBalance.Actions.GetStores,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetStoresSuccess
         }),
-        AjaxUpdateAvailableBalance: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.AvailableBalance.Actions.UpdateAvailableBalance,
+        AjaxUpdateAvailableBalance: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.AvailableBalance.Actions.UpdateAvailableBalance,
             autoSubmit: false,
             onSuccess: base.Event.AjaxUpdateAvailableBalanceSuccess
         }),

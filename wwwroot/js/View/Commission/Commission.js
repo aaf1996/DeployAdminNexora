@@ -1,5 +1,5 @@
-﻿ns('Mitosiz.Site.Commission.Index')
-Mitosiz.Site.Commission.Index.Controller = function () {
+﻿ns('Admin.Site.Commission.Index')
+Admin.Site.Commission.Index.Controller = function () {
     var base = this;
     base.Initialize = function () {
         base.Function.clsNumberPagination();
@@ -87,13 +87,13 @@ Mitosiz.Site.Commission.Index.Controller = function () {
         AjaxGetReportNetworkWithCommissionSuccess: function (data) {
             if (data) {
                 $('#loading-area').fadeOut();
-                window.open('https://api.yosoymitosis.com/StaticFiles/ReportCommission/' + data.data);
+                window.open('https://api.soynexora.com/StaticFiles/ReportCommission/' + data.data);
             }
         },
         AjaxGetReportGeneralCommissionSuccess: function (data) {
             if (data) {
                 $('#loading-area').fadeOut();
-                window.open('https://api.yosoymitosis.com/StaticFiles/ReportCommission/' + data.data);
+                window.open('https://api.soynexora.com/StaticFiles/ReportCommission/' + data.data);
             }
         },
         AjaxGetPeriodSuccess: function (data) {
@@ -223,53 +223,53 @@ Mitosiz.Site.Commission.Index.Controller = function () {
         },
     };
     base.Ajax = {
-        AjaxGetPeriods: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Commission.Actions.GetComissionPeriodForComission,
+        AjaxGetPeriods: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.GetComissionPeriodForComission,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetPeriodSuccess
         }),
-        AjaxRecalculationRTIBonus: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Commission.Actions.RecalculationRTIBonus,
+        AjaxRecalculationRTIBonus: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.RecalculationRTIBonus,
             autoSubmit: false,
             onSuccess: base.Event.AjaxRecalculationRTIBonusSuccess
         }),
-        AjaxRecalculationRetirementBonus: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Commission.Actions.RecalculationRetirementBonus,
+        AjaxRecalculationRetirementBonus: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.RecalculationRetirementBonus,
             autoSubmit: false,
             onSuccess: base.Event.AjaxRecalculationRetirementBonusSuccess
         }),
-        AjaxRecalculationPatronBonus: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Commission.Actions.RecalculationPatronBonus,
+        AjaxRecalculationPatronBonus: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.RecalculationPatronBonus,
             autoSubmit: false,
             onSuccess: base.Event.AjaxRecalculationPatronBonusSuccess
         }),
-        AjaxGetUserCommissionForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Commission.Actions.GetUserCommissionForAdmin,
+        AjaxGetUserCommissionForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.GetUserCommissionForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetUserCommissionForAdminSuccess
         }),
-        AjaxGetReportNetworkWithCommission: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Commission.Actions.GetReportNetworkWithCommission,
+        AjaxGetReportNetworkWithCommission: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.GetReportNetworkWithCommission,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetReportNetworkWithCommissionSuccess
         }),
-        AjaxGetReportGeneralCommission: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Commission.Actions.GetReportGeneralCommission,
+        AjaxGetReportGeneralCommission: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.GetReportGeneralCommission,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetReportGeneralCommissionSuccess
         }),
-        AjaxGetDetailCommissionByCommissionId: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Commission.Actions.GetDetailCommissionByCommissionId,
+        AjaxGetDetailCommissionByCommissionId: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.GetDetailCommissionByCommissionId,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetDetailCommissionByCommissionIdSuccess
         }),
-        AjaxUpdateCommissionUserByCommissionId: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Commission.Actions.UpdateCommissionUserByCommissionId,
+        AjaxUpdateCommissionUserByCommissionId: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.UpdateCommissionUserByCommissionId,
             autoSubmit: false,
             onSuccess: base.Event.AjaxUpdateCommissionUserByCommissionIdSuccess
         }),
-        AjaxRecalculationCommissionWholesale: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Commission.Actions.RecalculationCommissionWholesale,
+        AjaxRecalculationCommissionWholesale: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.RecalculationCommissionWholesale,
             autoSubmit: false,
             onSuccess: base.Event.AjaxRecalculationCommissionWholesaleSuccess
         }),

@@ -1,5 +1,5 @@
-﻿ns('Mitosiz.Site.User.Index')
-Mitosiz.Site.User.Index.Controller = function () {
+﻿ns('Admin.Site.User.Index')
+Admin.Site.User.Index.Controller = function () {
     var base = this;
     base.Initialize = function () {
         base.Function.GetUsersAdmin();
@@ -19,7 +19,7 @@ Mitosiz.Site.User.Index.Controller = function () {
             source: function (request, response) {
                 $.ajax({
                     type: 'POST',
-                    url: Mitosiz.Site.User.Actions.GetDropDownPatrons,
+                    url: Admin.Site.User.Actions.GetDropDownPatrons,
                     contentType: 'application/json',
                     data: JSON.stringify({
                         NamePatron: request.term 
@@ -217,7 +217,7 @@ Mitosiz.Site.User.Index.Controller = function () {
         },
         AjaxGenerateUserReportSuccess: function (data) {
             if (data) {
-                window.open('https://api.yosoymitosis.com/StaticFiles/ReportUser/' + data.data);
+                window.open('https://api.soynexora.com/StaticFiles/ReportUser/' + data.data);
             }
         },
         btnSearchClick: function () {
@@ -303,53 +303,53 @@ Mitosiz.Site.User.Index.Controller = function () {
         },
     };
     base.Ajax = {
-        AjaxGetUsersAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.User.Actions.GetDataUser,
+        AjaxGetUsersAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.User.Actions.GetDataUser,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetUsersAdminSuccess
         }),
-        AjaxGetUserDetailForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.User.Actions.GetUserDetailForAdmin,
+        AjaxGetUserDetailForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.User.Actions.GetUserDetailForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetUserDetailForAdminSuccess
         }),
-        AjaxUpdateUserForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.User.Actions.UpdateUserForAdmin,
+        AjaxUpdateUserForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.User.Actions.UpdateUserForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxUpdateUserForAdminSuccess
         }),
-        AjaxGetDepartmentForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.User.Actions.GetDepartmentForAdmin,
+        AjaxGetDepartmentForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.User.Actions.GetDepartmentForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetDepartmentForAdminSuccess
         }),
-        AjaxGetProvinceForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.User.Actions.GetProvinceForAdmin,
+        AjaxGetProvinceForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.User.Actions.GetProvinceForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetProvinceForAdminSuccess
         }),
-        AjaxGetDistrictForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.User.Actions.GetDistrictForAdmin,
+        AjaxGetDistrictForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.User.Actions.GetDistrictForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetDistrictForAdminSuccess
         }),
-        AjaxGetStoresAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.User.Actions.GetStores,
+        AjaxGetStoresAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.User.Actions.GetStores,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetStoresAdminSuccess
         }),
-        AjaxGetPackageDropDownForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.User.Actions.GetPackageDropDown,
+        AjaxGetPackageDropDownForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.User.Actions.GetPackageDropDown,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetPackageDropDownForAdminSuccess
         }),
-        AjaxDeleteUserForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.User.Actions.DeleteUser,
+        AjaxDeleteUserForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.User.Actions.DeleteUser,
             autoSubmit: false,
             onSuccess: base.Event.AjaxDeleteUserForAdminSuccess
         }),
-        AjaxGenerateUserReport: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.User.Actions.GenerateUserReport,
+        AjaxGenerateUserReport: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.User.Actions.GenerateUserReport,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGenerateUserReportSuccess
         }),

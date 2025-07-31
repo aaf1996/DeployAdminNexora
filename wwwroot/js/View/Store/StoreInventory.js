@@ -1,5 +1,5 @@
-﻿ns('Mitosiz.Site.StoreInventory.Index')
-Mitosiz.Site.StoreInventory.Index.Controller = function () {
+﻿ns('Admin.Site.StoreInventory.Index')
+Admin.Site.StoreInventory.Index.Controller = function () {
     var base = this;
     base.Initialize = function () {
         base.Function.GetStoreInventoryAdmin();
@@ -68,7 +68,7 @@ Mitosiz.Site.StoreInventory.Index.Controller = function () {
         },
         AjaxGenerateStoreInventoryReportSuccess: function (data) {
             if (data) {
-                window.open('https://api.yosoymitosis.com/StaticFiles/ReportStoreInventory/'+data.data);
+                window.open('https://api.soynexora.com/StaticFiles/ReportStoreInventory/'+data.data);
             }
         },
         btnSearchClick: function () {
@@ -119,23 +119,23 @@ Mitosiz.Site.StoreInventory.Index.Controller = function () {
         },
     };
     base.Ajax = {
-        AjaxGetStoreInventoryForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.StoreInventory.Actions.GetStoreInventoryForAdmin,
+        AjaxGetStoreInventoryForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.StoreInventory.Actions.GetStoreInventoryForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetStoreInventoryForAdminSuccess
         }),
-        AjaxGetDetailStoreInventoryForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.StoreInventory.Actions.GetDetailStoreInventoryForAdmin,
+        AjaxGetDetailStoreInventoryForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.StoreInventory.Actions.GetDetailStoreInventoryForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetDetailStoreInventoryForAdminSuccess
         }),
-        AjaxUpdateStockForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.StoreInventory.Actions.UpdateStockForAdmin,
+        AjaxUpdateStockForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.StoreInventory.Actions.UpdateStockForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxUpdateStockForAdminSuccess
         }),
-        AjaxGenerateStoreInventoryReport: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.StoreInventory.Actions.GenerateStoreInventoryReport,
+        AjaxGenerateStoreInventoryReport: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.StoreInventory.Actions.GenerateStoreInventoryReport,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGenerateStoreInventoryReportSuccess
         }),

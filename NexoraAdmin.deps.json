@@ -2702,7 +2702,10 @@
       },
       "Nexora.Entities/1.0.0": {
         "runtime": {
-          "Nexora.Entities.dll": {}
+          "Nexora.Entities.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         },
         "compile": {
           "Nexora.Entities.dll": {}
@@ -2714,7 +2717,10 @@
           "Nexora.Entities": "1.0.0"
         },
         "runtime": {
-          "Nexora.Logic.dll": {}
+          "Nexora.Logic.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         },
         "compile": {
           "Nexora.Logic.dll": {}

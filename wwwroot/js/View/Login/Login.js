@@ -1,5 +1,5 @@
-﻿ns('Mitosiz.Site.Login.PageLogin')
-Mitosiz.Site.Login.PageLogin.Controller = function () {
+﻿ns('Admin.Site.Login.PageLogin')
+Admin.Site.Login.PageLogin.Controller = function () {
     var base = this;
     base.Initialize = function () {
         base.Control.btnLogin().click(base.Event.btnLoginClick);
@@ -22,7 +22,7 @@ Mitosiz.Site.Login.PageLogin.Controller = function () {
         AjaxValidateLoginSuccess: function (data) {
             if (data) {
                 if (data.isSuccess) {
-                    window.location.href = Mitosiz.Site.Login.Actions.RedirectIndexAdmin;
+                    window.location.href = Admin.Site.Login.Actions.RedirectIndexAdmin;
                 }
                 else {
                     Swal.fire("Oops...", data.message, "error") 
@@ -31,8 +31,8 @@ Mitosiz.Site.Login.PageLogin.Controller = function () {
         }
     };
     base.Ajax = {
-        AjaxValidateLogin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.Login.Actions.ValidateLogin,
+        AjaxValidateLogin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Login.Actions.ValidateLogin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxValidateLoginSuccess
         })

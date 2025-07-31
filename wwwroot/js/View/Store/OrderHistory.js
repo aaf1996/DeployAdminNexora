@@ -1,5 +1,5 @@
-﻿ns('Mitosiz.Site.OrderHistory.Index')
-Mitosiz.Site.OrderHistory.Index.Controller = function () {
+﻿ns('Admin.Site.OrderHistory.Index')
+Admin.Site.OrderHistory.Index.Controller = function () {
     var base = this;
     base.Initialize = function () {
         base.Function.GetOrderAdmin();
@@ -112,28 +112,28 @@ Mitosiz.Site.OrderHistory.Index.Controller = function () {
         },
     };
     base.Ajax = {
-        AjaxGetWholesaleOrderForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.OrderHistory.Actions.GetWholesaleOrderForAdmin,
+        AjaxGetWholesaleOrderForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.OrderHistory.Actions.GetWholesaleOrderForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetWholesaleOrderForAdminSuccess
         }),
-        AjaxGetDetailWholesaleOrder: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.OrderHistory.Actions.GetDetailWholesaleOrder,
+        AjaxGetDetailWholesaleOrder: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.OrderHistory.Actions.GetDetailWholesaleOrder,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetDetailWholesaleOrderSuccess
         }),
-        AjaxApproveOrderWholesale: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.OrderHistory.Actions.ApproveOrderWholesale,
+        AjaxApproveOrderWholesale: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.OrderHistory.Actions.ApproveOrderWholesale,
             autoSubmit: false,
             onSuccess: base.Event.AjaxApproveOrderWholesaleSuccess
         }),
-        AjaxApproveShippingStatus: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.OrderHistory.Actions.ApproveShippingStatus,
+        AjaxApproveShippingStatus: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.OrderHistory.Actions.ApproveShippingStatus,
             autoSubmit: false,
             onSuccess: base.Event.AjaxApproveShippingStatusSuccess
         }),
-        AjaxDeleteOrderWholesale: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.OrderHistory.Actions.DeleteOrderWholesale,
+        AjaxDeleteOrderWholesale: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.OrderHistory.Actions.DeleteOrderWholesale,
             autoSubmit: false,
             onSuccess: base.Event.AjaxDeleteOrderWholesaleSuccess
         }),

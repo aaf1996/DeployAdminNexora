@@ -1,5 +1,5 @@
-﻿ns('Mitosiz.Site.InformationFiles.Index')
-Mitosiz.Site.InformationFiles.Index.Controller = function () {
+﻿ns('Admin.Site.InformationFiles.Index')
+Admin.Site.InformationFiles.Index.Controller = function () {
     var base = this;
     base.Initialize = function () {
         base.Function.clsNumberPagination();
@@ -118,7 +118,7 @@ Mitosiz.Site.InformationFiles.Index.Controller = function () {
             formData.append('fileName', fileNameUpdate);
 
             $.ajax({
-                url: Mitosiz.Site.InformationFiles.Actions.UpdateInformationFiles,
+                url: Admin.Site.InformationFiles.Actions.UpdateInformationFiles,
                 type: 'POST',
                 data: formData,
                 processData: false,
@@ -155,7 +155,7 @@ Mitosiz.Site.InformationFiles.Index.Controller = function () {
             formData.append('fileName', fileNameInsert);
 
             $.ajax({
-                url: Mitosiz.Site.InformationFiles.Actions.SaveInformationFiles,
+                url: Admin.Site.InformationFiles.Actions.SaveInformationFiles,
                 type: 'POST',
                 data: formData,
                 processData: false,
@@ -192,23 +192,23 @@ Mitosiz.Site.InformationFiles.Index.Controller = function () {
         },
     };
     base.Ajax = {
-        AjaxGetListFileType: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.InformationFiles.Actions.GetListFileType,
+        AjaxGetListFileType: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.InformationFiles.Actions.GetListFileType,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetListFileTypeSuccess
         }),
-        AjaxGetInformationFilesForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.InformationFiles.Actions.GetInformationFilesForAdmin,
+        AjaxGetInformationFilesForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.InformationFiles.Actions.GetInformationFilesForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetInformationFilesForAdminSuccess
         }),
-        AjaxGetDetailInformationFilesForAdmin: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.InformationFiles.Actions.GetDetailInformationFilesForAdmin,
+        AjaxGetDetailInformationFilesForAdmin: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.InformationFiles.Actions.GetDetailInformationFilesForAdmin,
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetDetailInformationFilesForAdminSuccess
         }),
-        AjaxDeleteInformationFiles: new Mitosiz.Site.UI.Web.Components.Ajax({
-            action: Mitosiz.Site.InformationFiles.Actions.DeleteInformationFiles,
+        AjaxDeleteInformationFiles: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.InformationFiles.Actions.DeleteInformationFiles,
             autoSubmit: false,
             onSuccess: base.Event.AjaxDeleteInformationFilesSuccess
         }),
