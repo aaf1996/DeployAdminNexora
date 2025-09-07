@@ -5,6 +5,7 @@ Admin.Site.Purchase.Index.Controller = function () {
         base.Function.GetPurchasesAdmin();
         base.Function.clsNumberPagination();
         base.Function.clsNumberPaginationModal();
+        base.Function.clsApproveOrderClick();
         base.Function.clsUpdateDataClick();
         base.Function.clsDeletePurchaseClick();
         base.Control.btnSearch().click(base.Event.btnSearchClick);
@@ -173,6 +174,18 @@ Admin.Site.Purchase.Index.Controller = function () {
                 }
             }
         },
+        AjaxValidatePurchaseSuccess: function (data) {
+            if (data) {
+                if (data.isSuccess) {
+                    Swal.fire("Excelente !!", "La compra fue validada !!", "success")
+                    base.Function.GetPurchasesAdmin();
+                }
+                else {
+                    Swal.fire("Oops...", "Ocurrió un error, Por favor intententelo nuevamente", "error")
+                    base.Function.GetPurchasesAdmin();
+                }
+            }
+        },
         btnSearchClick: function () {
             var userId = (base.Control.txtUserId().val() == "") ? 0 : parseInt(base.Control.txtUserId().val());
             var purchaseId = (base.Control.txtPurchaseIdFilter().val() == "") ? 0 : parseInt(base.Control.txtPurchaseIdFilter().val());
@@ -296,6 +309,11 @@ Admin.Site.Purchase.Index.Controller = function () {
             action: Admin.Site.Purchase.Actions.DeletePurchase,
             autoSubmit: false,
             onSuccess: base.Event.AjaxDeletePurchaseSuccess
+        }),
+        AjaxValidatePurchase: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Purchase.Actions.ValidatePurchase,
+            autoSubmit: false,
+            onSuccess: base.Event.AjaxValidatePurchaseSuccess
         }),
     };
     base.Function = {
@@ -453,6 +471,7 @@ Admin.Site.Purchase.Index.Controller = function () {
             listData.forEach(function (data) {
                 var urlVoucher = 'https://api.soynexora.com/StaticFiles/PaymentImg/' + data.voucher;
                 var styleVoucher = data.voucher == '' ? "display:none;" : "";
+                var styleApproveOrder = data.statusPurchase == 'Validada' ? "display:none;" : "";
                 var styleDelete = data.statusPurchase == 'Evaluación' || data.statusPurchase == 'Validada' ? "display:none;" : "";
                 base.Control.tbodyTable().append('<tr style="text-align: center;">' +
                     '<td>' +
@@ -486,14 +505,42 @@ Admin.Site.Purchase.Index.Controller = function () {
                     '<td>' + data.statusPurchase + '</td>' +
                     '<td>' + data.shippingStatus + '</td>' +
                     '<td>' +
+                    '<div style="' + styleApproveOrder + '">' +
+                    '<a class= "approveOrder btn btn-success shadow btn-s sharp me-1" value="' + data.purchaseId + '" target="_blank">' +
+                    '<i class="fa fa-check"></i>' +
+                    '</a>' +
+                    '</div></td>' +
+                    '<td>' +
                     '<div style="' + styleVoucher +'">' +
-                    '<a href = "' + urlVoucher +'" class= "btn btn-primary shadow btn-s sharp me-1" target="_blank">' +
+                    '<a href = "' + urlVoucher + '" class= "btn btn-primary shadow btn-s sharp me-1" target="_blank">' +
                             '<i class="fa-solid fa-ticket"></i>' +
                         '</a>' +
                     '</div></td>' +
                     '</tr>');
             });
             base.Function.UpdatePagination();
+        },
+        clsApproveOrderClick: function () {
+            var parentElement = $(document);
+            parentElement.on('click', '.approveOrder', function () {
+                var purchaseId = $(this).attr('value');
+                Swal.fire({
+                    title: "Estás segur@ de validar la compra?",
+                    text: "Esto no se puede revertir!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Si, validar!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        base.Ajax.AjaxValidatePurchase.data = {
+                            purchaseId: purchaseId
+                        };
+                        base.Ajax.AjaxValidatePurchase.submit();
+                    }
+                });
+            });
         },
         clsUpdateDataClick: function () {
             var parentElement = $(document);
@@ -539,6 +586,8 @@ Admin.Site.Purchase.Index.Controller = function () {
             base.Control.txtUserName().val("");
             base.Control.txtStartDate().datepicker("setDate", new Date());
             base.Control.txtEndDate().datepicker("setDate", new Date());
+            base.Control.slcStatusFilter().find('option:first').prop('selected', true);
+            base.Control.slcStatusFilter().selectpicker('refresh');
         },
         FillDataDetailPurchaseIntoModal: function (listDetail) {
             base.Control.tbodyDetailPurchase().empty();

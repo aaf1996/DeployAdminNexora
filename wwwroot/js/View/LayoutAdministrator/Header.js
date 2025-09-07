@@ -3,6 +3,7 @@ Admin.Site.Header.Logout.Controller = function () {
     var base = this;
     base.Initialize = function () {
         base.Control.bntLogout().click(base.Event.bntLogoutClick);
+        base.Function.GetCountPendingPurchase();
         setInterval(function () {
             base.Function.GetCountPendingPurchase();
         }, 30000);
