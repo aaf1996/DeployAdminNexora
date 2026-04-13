@@ -35,6 +35,10 @@ Admin.Site.Commission.Index.Controller = function () {
         txtPatronBonus: function () { return $('#txtPatronBonus'); },
         txtRetirementBonus: function () { return $('#txtRetirementBonus'); },
         txtRtiBonus: function () { return $('#txtRtiBonus'); },
+        txtAcceleratorBonus: function () { return $('#txtAcceleratorBonus'); },
+        txtLeadershipBonus: function () { return $('#txtLeadershipBonus'); },
+        txtMarketingBonus: function () { return $('#txtMarketingBonus'); },
+        txtUtilitiesBonus: function () { return $('#txtUtilitiesBonus'); },
         txtExtraBonus: function () { return $('#txtExtraBonus'); },
         modalUpdate: function () { return $('#modalUpdate'); },
         btnUpdateModal: function () { return $('#btnUpdateModal'); },
@@ -125,6 +129,10 @@ Admin.Site.Commission.Index.Controller = function () {
                     base.Control.txtPatronBonus().val(data.data.patronBonus);
                     base.Control.txtRetirementBonus().val(data.data.retirementBonus);
                     base.Control.txtRtiBonus().val(data.data.rtiBonus);
+                    base.Control.txtAcceleratorBonus().val(data.data.acceleratorBonus);
+                    base.Control.txtLeadershipBonus().val(data.data.leadershipBonus);
+                    base.Control.txtMarketingBonus().val(data.data.marketingBonus);
+                    base.Control.txtUtilitiesBonus().val(data.data.utilitiesBonus);
                     base.Control.txtExtraBonus().val(data.data.extraBonus);
                     base.Control.modalUpdate().modal('show');
                 }
@@ -217,6 +225,10 @@ Admin.Site.Commission.Index.Controller = function () {
                 patronBonus: base.Control.txtPatronBonus().val(),
                 retirementBonus: base.Control.txtRetirementBonus().val(),
                 rtiBonus: base.Control.txtRtiBonus().val(),
+                marketingBonus: base.Control.txtMarketingBonus().val(),
+                utilitiesBonus: base.Control.txtUtilitiesBonus().val(),
+                leadershipBonus: base.Control.txtLeadershipBonus().val(),
+                acceleratorBonus: base.Control.txtAcceleratorBonus().val(),
                 extraBonus: base.Control.txtExtraBonus().val()
             };
             base.Ajax.AjaxUpdateCommissionUserByCommissionId.submit();
@@ -371,7 +383,10 @@ Admin.Site.Commission.Index.Controller = function () {
                     '<td>' + data.lastName + '</td>' +
                     '<td>' + data.patronBonus + '</td>' +
                     '<td>' + data.retirementBonus + '</td>' +
-                    '<td>' + data.rtiBonus + '</td>' +
+                    '<td>' + data.acceleratorBonus + '</td>' +
+                    '<td>' + data.leadershipBonus + '</td>' +
+                    '<td>' + data.marketingBonus + '</td>' +
+                    '<td>' + data.utilitiesBonus + '</td>' +
                     '<td>' + data.extraBonus + '</td>' +
                     '<td>' + data.totalComission + '</td>' +
                     '</tr>');
