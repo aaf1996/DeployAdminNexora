@@ -38,6 +38,8 @@ Admin.Site.Store.Index.Controller = function () {
         txtOrder: function () { return $('#txtOrder'); },
         slcIsWarehouse: function () { return $('#slcIsWarehouse'); },
         btnCreateStore: function () { return $('#btnCreateStore'); },
+        txtUserNameWholesale: function () { return $('#txtUserNameWholesale'); },
+        txtPasswordWholesale: function () { return $('#txtPasswordWholesale'); },
     };
     base.Event = {
         AjaxGetStoreForAdminSuccess: function (data) {
@@ -102,6 +104,8 @@ Admin.Site.Store.Index.Controller = function () {
                 phone: base.Control.txtPhone().val(),
                 mail: base.Control.txtMail().val(),
                 orderList: base.Control.txtOrder().val(),
+                userName: base.Control.txtUserNameWholesale().val(),
+                password: base.Control.txtPasswordWholesale().val(),
             };
             base.Ajax.AjaxUpdateUpdateStoreForAdmin.submit();
         },
@@ -117,6 +121,8 @@ Admin.Site.Store.Index.Controller = function () {
                 phone: base.Control.txtPhone().val(),
                 mail: base.Control.txtMail().val(),
                 orderList: base.Control.txtOrder().val(),
+                userName: base.Control.txtUserNameWholesale().val(),
+                password: base.Control.txtPasswordWholesale().val(),
             };
             base.Ajax.AjaxCreateSaveStoreForAdmin.submit();
         },
@@ -281,6 +287,7 @@ Admin.Site.Store.Index.Controller = function () {
             base.Control.txtLatitude().val(data.latitude);
             base.Control.txtLongitude().val(data.longitude);
             base.Control.txtOrder().val(data.orderList);
+            base.Control.txtUserNameWholesale().val(data.userName);
             base.Control.slcActive().val(data.active.toString());
             base.Control.slcActive().selectpicker('refresh');
             base.Control.slcIsWarehouse().val(data.isWarehouse.toString());
