@@ -42,6 +42,8 @@ Admin.Site.Commission.Index.Controller = function () {
         txtExtraBonus: function () { return $('#txtExtraBonus'); },
         modalUpdate: function () { return $('#modalUpdate'); },
         btnUpdateModal: function () { return $('#btnUpdateModal'); },
+        txtBonoAlcanceRango: function () { return $('#txtBonoAlcanceRango'); },
+        txtBonoKit: function () { return $('#txtBonoKit'); },
 
     };
     base.Event = {
@@ -182,6 +184,8 @@ Admin.Site.Commission.Index.Controller = function () {
                     base.Control.txtMarketingBonus().val(data.data.marketingBonus);
                     base.Control.txtUtilitiesBonus().val(data.data.utilitiesBonus);
                     base.Control.txtExtraBonus().val(data.data.extraBonus);
+                    base.Control.txtBonoAlcanceRango().val(data.data.bonoAlcanceRango);
+                    base.Control.txtBonoKit().val(data.data.bonoKit);
                     base.Control.modalUpdate().modal('show');
                 }
             }
@@ -301,7 +305,9 @@ Admin.Site.Commission.Index.Controller = function () {
                 utilitiesBonus: base.Control.txtUtilitiesBonus().val(),
                 leadershipBonus: base.Control.txtLeadershipBonus().val(),
                 acceleratorBonus: base.Control.txtAcceleratorBonus().val(),
-                extraBonus: base.Control.txtExtraBonus().val()
+                extraBonus: base.Control.txtExtraBonus().val(),
+                bonoAlcanceRango: base.Control.txtBonoAlcanceRango().val(),
+                bonoKit: base.Control.txtBonoKit().val(),
             };
             base.Ajax.AjaxUpdateCommissionUserByCommissionId.submit();
         },
@@ -484,6 +490,8 @@ Admin.Site.Commission.Index.Controller = function () {
                     '<td>' + data.leadershipBonus + '</td>' +
                     '<td>' + data.marketingBonus + '</td>' +
                     '<td>' + data.utilitiesBonus + '</td>' +
+                    '<td>' + data.bonoAlcanceRango + '</td>' +
+                    '<td>' + data.bonoKit + '</td>' +
                     '<td>' + data.extraBonus + '</td>' +
                     '<td>' + data.totalComission + '</td>' +
                     '</tr>');
