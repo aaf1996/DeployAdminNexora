@@ -88,6 +88,54 @@ Admin.Site.Commission.Index.Controller = function () {
                 }
             }
         },
+        AjaxRecalculationTeamBonusSuccess: function (data) {
+            if (data) {
+                if (data.isSuccess) {
+                    $('#loading-area').fadeOut();
+                    Swal.fire("Excelente !!", "Recalculo terminado !!", "success");
+                }
+            }
+        },
+        AjaxRecalculationBonoAlcanceRangoSuccess: function (data) {
+            if (data) {
+                if (data.isSuccess) {
+                    $('#loading-area').fadeOut();
+                    Swal.fire("Excelente !!", "Recalculo terminado !!", "success");
+                }
+            }
+        },
+        AjaxRecalculationBonoKitSuccess: function (data) {
+            if (data) {
+                if (data.isSuccess) {
+                    $('#loading-area').fadeOut();
+                    Swal.fire("Excelente !!", "Recalculo terminado !!", "success");
+                }
+            }
+        },
+        AjaxRecalculationAcceleratorBonusSuccess: function (data) {
+            if (data) {
+                if (data.isSuccess) {
+                    $('#loading-area').fadeOut();
+                    Swal.fire("Excelente !!", "Recalculo terminado !!", "success");
+                }
+            }
+        },
+        AjaxRecalculationMarketingBonusSuccess: function (data) {
+            if (data) {
+                if (data.isSuccess) {
+                    $('#loading-area').fadeOut();
+                    Swal.fire("Excelente !!", "Recalculo terminado !!", "success");
+                }
+            }
+        },
+        AjaxRecalculationLeadershipBonusSuccess: function (data) {
+            if (data) {
+                if (data.isSuccess) {
+                    $('#loading-area').fadeOut();
+                    Swal.fire("Excelente !!", "Recalculo terminado !!", "success");
+                }
+            }
+        },
         AjaxGetReportNetworkWithCommissionSuccess: function (data) {
             if (data) {
                 $('#loading-area').fadeOut();
@@ -178,11 +226,11 @@ Admin.Site.Commission.Index.Controller = function () {
         btnRecalculationClick: function () {
             $('#loading-area').fadeIn();
             var process = base.Control.slcProcess().val();
-            if (process == "3") {
-                base.Ajax.AjaxRecalculationRTIBonus.data = {
+            if (process == "1") {
+                base.Ajax.AjaxRecalculationPatronBonus.data = {
                     commissionPeriodId: base.Control.slcPeriod().val()
                 };
-                base.Ajax.AjaxRecalculationRTIBonus.submit();
+                base.Ajax.AjaxRecalculationPatronBonus.submit();
             }
             else if (process == "2") {
                 base.Ajax.AjaxRecalculationRetirementBonus.data = {
@@ -190,17 +238,41 @@ Admin.Site.Commission.Index.Controller = function () {
                 };
                 base.Ajax.AjaxRecalculationRetirementBonus.submit();
             }
-            else if (process == "1") {
-                base.Ajax.AjaxRecalculationPatronBonus.data = {
+            else if (process == "3") {
+                base.Ajax.AjaxRecalculationAcceleratorBonus.data = {
                     commissionPeriodId: base.Control.slcPeriod().val()
                 };
-                base.Ajax.AjaxRecalculationPatronBonus.submit();
+                base.Ajax.AjaxRecalculationAcceleratorBonus.submit();
             }
             else if (process == "4") {
                 base.Ajax.AjaxRecalculationCommissionWholesale.data = {
                     commissionPeriodId: base.Control.slcPeriod().val()
                 };
                 base.Ajax.AjaxRecalculationCommissionWholesale.submit();
+            }
+            else if (process == "5") {
+                base.Ajax.AjaxRecalculationLeadershipBonus.data = {
+                    commissionPeriodId: base.Control.slcPeriod().val()
+                };
+                base.Ajax.AjaxRecalculationLeadershipBonus.submit();
+            }
+            else if (process == "6") {
+                base.Ajax.AjaxRecalculationMarketingBonus.data = {
+                    commissionPeriodId: base.Control.slcPeriod().val()
+                };
+                base.Ajax.AjaxRecalculationMarketingBonus.submit();
+            }
+            else if (process == "7") {
+                base.Ajax.AjaxRecalculationBonoKit.data = {
+                    commissionPeriodId: base.Control.slcPeriod().val()
+                };
+                base.Ajax.AjaxRecalculationBonoKit.submit();
+            }
+            else if (process == "8") {
+                base.Ajax.AjaxRecalculationBonoAlcanceRango.data = {
+                    commissionPeriodId: base.Control.slcPeriod().val()
+                };
+                base.Ajax.AjaxRecalculationBonoAlcanceRango.submit();
             }
         },
         btnGenerateReportClick: function () {
@@ -240,10 +312,35 @@ Admin.Site.Commission.Index.Controller = function () {
             autoSubmit: false,
             onSuccess: base.Event.AjaxGetPeriodSuccess
         }),
-        AjaxRecalculationRTIBonus: new Admin.Site.UI.Web.Components.Ajax({
-            action: Admin.Site.Commission.Actions.RecalculationRTIBonus,
+        AjaxRecalculationTeamBonus: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.RecalculationTeamBonus,
             autoSubmit: false,
-            onSuccess: base.Event.AjaxRecalculationRTIBonusSuccess
+            onSuccess: base.Event.AjaxRecalculationTeamBonusSuccess
+        }),
+        AjaxRecalculationBonoAlcanceRango: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.RecalculationBonoAlcanceRango,
+            autoSubmit: false,
+            onSuccess: base.Event.AjaxRecalculationBonoAlcanceRangoSuccess
+        }),
+        AjaxRecalculationBonoKit: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.RecalculationBonoKit,
+            autoSubmit: false,
+            onSuccess: base.Event.AjaxRecalculationBonoKitSuccess
+        }),
+        AjaxRecalculationAcceleratorBonus: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.RecalculationAcceleratorBonus,
+            autoSubmit: false,
+            onSuccess: base.Event.AjaxRecalculationAcceleratorBonusSuccess
+        }),
+        AjaxRecalculationMarketingBonus: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.RecalculationMarketingBonus,
+            autoSubmit: false,
+            onSuccess: base.Event.AjaxRecalculationMarketingBonusSuccess
+        }),
+        AjaxRecalculationLeadershipBonus: new Admin.Site.UI.Web.Components.Ajax({
+            action: Admin.Site.Commission.Actions.RecalculationLeadershipBonus,
+            autoSubmit: false,
+            onSuccess: base.Event.AjaxRecalculationLeadershipBonusSuccess
         }),
         AjaxRecalculationRetirementBonus: new Admin.Site.UI.Web.Components.Ajax({
             action: Admin.Site.Commission.Actions.RecalculationRetirementBonus,
